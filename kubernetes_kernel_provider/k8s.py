@@ -86,7 +86,7 @@ class KubernetesKernelLifecycleManager(ContainerKernelLifecycleManager):
         # the process of restarting the kernel, then that's our target, else just delete the pod.
 
         result = False
-        body = client.V1DeleteOptions(grace_period_seconds=0, propagation_policy='Background')
+        body = client.V1DeleteOptions(grace_period_seconds=6000, propagation_policy='Background')
 
         if self.delete_kernel_namespace and not self.kernel_manager.restarting:
             object_name = 'namespace'
